@@ -58,6 +58,7 @@ body{
     text-transform: uppercase;
 
     backface-visibility: hidden; /* backpart of an element, fixes the little shake from animation */
+    margin-bottom: 60px;
 }
 
 /* span default is inline, you'd want block because block occupy the entire space and create line break before and after;
@@ -123,4 +124,32 @@ body{
     top: 40%;   
     left: 50%;  /* START at 50% so it's not correct */
     transform: translate(-50%, -50%); /* Now it is 50% of the CURRENT element */
+    text-align: center; /* help center the button */
+}
+
+/* Applies to link that has not been selected*/
+.btn:link,
+.btn:visited{
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px; /* top and bottom and left and right*/
+    display: inline-block; /* should always do this if you want to give paddings or height/width*/
+    border-radius: 100px;
+    transition: all .2s; /* Has to be on the initial state, smooth out the transform props */
+}
+
+.btn:hover{
+    transform: translateY(-3px); /* Move up when hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .2); /* x y blur */
+}
+
+.btn:active{
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+}
+
+.btn-white{
+    background-color: #fff;
+    color: #777;
+
 }
