@@ -6,3 +6,38 @@ Medium green: #55c57a
 Dark green: #28b485
 
 */
+
+/*
+    Select everything and normalizes it, removing all margins and paddings
+*/
+* {
+    margin: 0;
+    padding: 0;
+    /* Changes borders and paddings so that the width and height are no longer added
+        to the total size of the box */
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7; /* 1.7 times bigger than the normal */
+    color: #777;
+    padding: 30px;
+}
+
+.header{
+    height: 95vh; /* Every point, height of this element is 95% of the view port */
+    /* Basically two background images, first is on top */
+    background-image: linear-gradient(
+        to right bottom, 
+        hsla(111, 55%, 64%, 0.8), 
+        hsla(160, 64%, 43%, 0.8)) , 
+        url('../img/hero.jpg');
+    background-size: cover;
+    background-position: top; /* Make sure at all resolution, the img is hitting the top*/
+
+    /* Looking at the 4 corners clockwise (x y)*/
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%); /* Clipping the header to a certain shape */
+}
