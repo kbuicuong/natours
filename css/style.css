@@ -94,7 +94,7 @@ body{
     }
 
     80% {
-        transform: translate(10px); /* Move a bit more to the right before popping back */
+        transform: translateX(10px); /* Move a bit more to the right before popping back */
     }
 
     100% {
@@ -110,7 +110,19 @@ body{
     }
 
     80% {
-        transform: translate(-10px); 
+        transform: translateX(-10px); 
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px); 
     }
 
     100% {
@@ -136,6 +148,7 @@ body{
     display: inline-block; /* should always do this if you want to give paddings or height/width*/
     border-radius: 100px;
     transition: all .2s; /* Has to be on the initial state, smooth out the transform props */
+    position: relative; 
 }
 
 .btn:hover{
@@ -151,5 +164,32 @@ body{
 .btn-white{
     background-color: #fff;
     color: #777;
+}
 
+/* Modeled after the original button */
+.btn::after{
+    content: ""; /* Must specify this, can be empty */
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute; /* Need this to be behind the button so the parent need to be relative*/
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.btn-white::after{
+    background-color: #fff;
+}
+
+.btn:hover::after{
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0; /* Fade out */
+}
+
+.btn-animated{
+    animation: moveInBottom .5s ease-out .75s; /* .75s delay */
+    animation-fill-mode: backwards; /* Apply the end of the keyframes first making it invisible before animation */
 }
