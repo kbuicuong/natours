@@ -1,0 +1,21 @@
+/*
+    Select everything and normalizes it, removing all margins and paddings
+*/
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit; /* Better practice to have it in body instead */
+}
+
+html{
+    //This defines what 1rem is
+    font-size: 62.5%; /* 16px default, this calculate to 10px*/
+}
+
+body{
+    /* Changes borders and paddings so that the width and height are no longer added
+        to the total size of the box */
+    box-sizing: border-box;
+}

@@ -1,0 +1,33 @@
+.header{
+    height: 95vh; /* Height of this element is 95% of the view port */
+    /* Basically two background images, first is on top, in this case the gradient*/
+    background-image: linear-gradient(
+        to right bottom, 
+        rgba($color-primary-light, 0.8), 
+        rgba($color-primary-dark, 0.8)) , 
+        url('../img/hero.jpg');
+    background-size: cover;
+    background-position: top; /* Make sure at all resolution, the img is hitting the top*/
+    position: relative;
+
+    /* Looking at the 4 corners clockwise (x y)*/
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%); /* Clipping the header to a certain shape */
+
+    &__logo-box{
+        position: absolute; /* */
+        top: 4rem;  /* Measured from the parent element, in this case it's the header */
+        left: 4rem;
+    }
+
+    &__logo{
+        height: 3.5rem;
+    }
+
+    &__text-box {
+        position: absolute;
+        top: 40%;   
+        left: 50%;  /* START at 50% so it's not correct */
+        transform: translate(-50%, -50%); /* Now it is 50% of the CURRENT element */
+        text-align: center; /* help center the button */
+    }
+}

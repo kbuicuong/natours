@@ -1,0 +1,55 @@
+.btn{
+    /* Applies to link that has not been selected*/
+    &:link,
+    &:visited{
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem; /* top and bottom and left and right*/
+        display: inline-block; /* should always do this if you want to give paddings or height/width*/
+        border-radius: 10rem;
+        transition: all .2s; /* Has to be on the initial state, smooth out the transform props */
+        position: relative; 
+    }
+    &:hover{
+        transform: translateY(-3px); /* Move up when hover */
+        box-shadow: 0 1rem 2rem rgba($color-black, .2); /* x y blur */
+    
+        &::after{
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0; /* Fade out */
+        }
+    }
+    
+    &:active{
+        transform: translateY(-1px);
+        box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+    }
+    
+    &--white{
+        background-color: $color-white;
+        color: $color-grey-dark;
+
+        &::after{
+            background-color: $color-white;
+        }
+    }
+    
+    /* Modeled after the original button */
+    &::after{
+        content: ""; /* Must specify this, can be empty */
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        position: absolute; /* Need this to be behind the button so the parent need to be relative*/
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .4s;
+    }
+    
+    &--animated{
+        animation: moveInBottom .5s ease-out .75s; /* .75s delay */
+        animation-fill-mode: backwards; /* Apply the end of the keyframes first making it invisible before animation */
+    }
+}
