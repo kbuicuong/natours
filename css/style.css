@@ -1,11 +1,35 @@
-/*
-COLORS:
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem); }
+  80% {
+    transform: translateX(-1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
 
-Light green: #7ed56f
-Medium green: #55c57a
-Dark green: #28b485
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
 
-*/
+/* Animation, what happens at each percentage*/
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+    /* Start negative in the X direction */ }
+  80% {
+    transform: translateX(1rem);
+    /* Move a bit more to the right before popping back */ }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+    /* Look exactly like it looks right now */ } }
+
 /*
     Select everything and normalizes it, removing all margins and paddings
 */
@@ -22,6 +46,11 @@ html {
   /* 16px default, this calculate to 10px*/ }
 
 body {
+  /* Changes borders and paddings so that the width and height are no longer added
+        to the total size of the box */
+  box-sizing: border-box; }
+
+body {
   font-family: "Lato", sans-serif;
   font-weight: 400;
   /* font-size: 16px; */
@@ -29,40 +58,7 @@ body {
   line-height: 1.7;
   /* 1.7 times bigger than the normal */
   color: #777;
-  padding: 3rem;
-  /* Changes borders and paddings so that the width and height are no longer added
-        to the total size of the box */
-  box-sizing: border-box; }
-
-.header {
-  height: 95vh;
-  /* Height of this element is 95% of the view port */
-  /* Basically two background images, first is on top, in this case the gradient*/
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero.jpg");
-  background-size: cover;
-  background-position: top;
-  /* Make sure at all resolution, the img is hitting the top*/
-  position: relative;
-  /* Looking at the 4 corners clockwise (x y)*/
-  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
-  /* Clipping the header to a certain shape */ }
-  .header__logo-box {
-    position: absolute;
-    /* */
-    top: 4rem;
-    /* Measured from the parent element, in this case it's the header */
-    left: 4rem; }
-  .header__logo {
-    height: 3.5rem; }
-  .header__text-box {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    /* START at 50% so it's not correct */
-    transform: translate(-50%, -50%);
-    /* Now it is 50% of the CURRENT element */
-    text-align: center;
-    /* help center the button */ }
+  padding: 3rem; }
 
 .heading-primary {
   color: #fff;
@@ -92,37 +88,25 @@ body {
     animation: moveInRight 1s ease-out;
     /* Combination of many properties*/ }
 
-/* Animation, what happens at each percentage*/
-@keyframes moveInLeft {
-  0% {
-    opacity: 0;
-    transform: translateX(-10rem);
-    /* Start negative in the X direction */ }
-  80% {
-    transform: translateX(1rem);
-    /* Move a bit more to the right before popping back */ }
-  100% {
-    opacity: 1;
-    transform: translate(0);
-    /* Look exactly like it looks right now */ } }
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  background-image: linear-gradient(to right, #7ed56f, #28b485);
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: .2rem;
+  transition: all .2s; }
+  .heading-secondary:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
 
-@keyframes moveInRight {
-  0% {
-    opacity: 0;
-    transform: translateX(10rem); }
-  80% {
-    transform: translateX(-1rem); }
-  100% {
-    opacity: 1;
-    transform: translate(0); } }
+.u-center-text {
+  text-align: center; }
 
-@keyframes moveInBottom {
-  0% {
-    opacity: 0;
-    transform: translateY(3rem); }
-  100% {
-    opacity: 1;
-    transform: translate(0); } }
+.u-margin-bottom-8 {
+  margin-bottom: 8rem; }
 
 .btn {
   /* Applies to link that has not been selected*/
@@ -173,3 +157,64 @@ body {
     /* .75s delay */
     animation-fill-mode: backwards;
     /* Apply the end of the keyframes first making it invisible before animation */ }
+
+.header {
+  height: 95vh;
+  /* Height of this element is 95% of the view port */
+  /* Basically two background images, first is on top, in this case the gradient*/
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero.jpg");
+  background-size: cover;
+  background-position: top;
+  /* Make sure at all resolution, the img is hitting the top*/
+  position: relative;
+  /* Looking at the 4 corners clockwise (x y)*/
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+  /* Clipping the header to a certain shape */ }
+  .header__logo-box {
+    position: absolute;
+    /* */
+    top: 4rem;
+    /* Measured from the parent element, in this case it's the header */
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    /* START at 50% so it's not correct */
+    transform: translate(-50%, -50%);
+    /* Now it is 50% of the CURRENT element */
+    text-align: center;
+    /* help center the button */ }
+
+.row {
+  max-width: 114rem;
+  margin: 0 auto; }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 6rem; }
+  .row .col-1-of-2 {
+    width: calc((100% - 6rem) / 2); }
+  .row .col-1-of-3 {
+    width: calc((100% - 2 * 6rem) / 3); }
+  .row .col-2-of-3 {
+    width: calc(2 * ((100% - 2 * 6rem) / 3) + 6rem); }
+  .row .col-1-of-4 {
+    width: calc((100% - 3 * 6rem) / 4); }
+  .row .col-2-of-4 {
+    width: calc(2 * ((100% - 3 * 6rem) / 4) + 6rem); }
+  .row .col-3-of-4 {
+    width: calc(3 * ((100% - 3 * 6rem) / 4) + (2 * 6rem)); }
+
+.section-about {
+  background-color: #f7f7f7;
+  padding: 25rem 0;
+  margin-top: -25vh; }
