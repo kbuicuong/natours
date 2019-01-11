@@ -46,46 +46,51 @@ body {
   /* Looking at the 4 corners clockwise (x y)*/
   clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
   /* Clipping the header to a certain shape */ }
-
-.header__logo-box {
-  position: absolute;
-  /* */
-  top: 4rem;
-  /* Measured from the parent element, in this case it's the header */
-  left: 4rem; }
-
-.header__logo {
-  height: 3.5rem; }
+  .header__logo-box {
+    position: absolute;
+    /* */
+    top: 4rem;
+    /* Measured from the parent element, in this case it's the header */
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    /* START at 50% so it's not correct */
+    transform: translate(-50%, -50%);
+    /* Now it is 50% of the CURRENT element */
+    text-align: center;
+    /* help center the button */ }
 
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
   backface-visibility: hidden;
   /* backpart of an element, fixes the little shake from animation */
-  margin-bottom: 6rem; }
-
-/* span default is inline, you'd want block because block occupy the entire space and create line break before and after;
+  margin-bottom: 6rem;
+  /* span default is inline, you'd want block because block occupy the entire space and create line break before and after;
     doing so will cause the two span to stack on top of each other    
-*/
-.heading-primary--main {
-  display: block;
-  font-size: 6rem;
-  font-weight: 400;
-  letter-spacing: 3.5rem;
-  /* Call the keyframe animation */
-  animation-name: moveInLeft;
-  animation-duration: 1s;
-  animation-timing-function: ease-out;
-  /* Speed of the animation, fast in and slow out*/
-  /* animation-iteration-count: 3;  how many time the animation is played*/ }
-
-.heading-primary--sub {
-  display: block;
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 1.75rem;
-  animation: moveInRight 1s ease-out;
-  /* Combination of many properties*/ }
+*/ }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    /* Call the keyframe animation */
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    /* Speed of the animation, fast in and slow out*/
+    /* animation-iteration-count: 3;  how many time the animation is played*/ }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    animation: moveInRight 1s ease-out;
+    /* Combination of many properties*/ }
 
 /* Animation, what happens at each percentage*/
 @keyframes moveInLeft {
@@ -119,69 +124,52 @@ body {
     opacity: 1;
     transform: translate(0); } }
 
-.header__text-box {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  /* START at 50% so it's not correct */
-  transform: translate(-50%, -50%);
-  /* Now it is 50% of the CURRENT element */
-  text-align: center;
-  /* help center the button */ }
-
-/* Applies to link that has not been selected*/
-.btn:link,
-.btn:visited {
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 1.5rem 4rem;
-  /* top and bottom and left and right*/
-  display: inline-block;
-  /* should always do this if you want to give paddings or height/width*/
-  border-radius: 10rem;
-  transition: all .2s;
-  /* Has to be on the initial state, smooth out the transform props */
-  position: relative; }
-
-.btn:hover {
-  transform: translateY(-3px);
-  /* Move up when hover */
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
-  /* x y blur */ }
-
-.btn:active {
-  transform: translateY(-1px);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
-
-.btn--white {
-  background-color: #fff;
-  color: #777; }
-
-/* Modeled after the original button */
-.btn::after {
-  content: "";
-  /* Must specify this, can be empty */
-  display: inline-block;
-  height: 100%;
-  width: 100%;
-  border-radius: 10rem;
-  position: absolute;
-  /* Need this to be behind the button so the parent need to be relative*/
-  top: 0;
-  left: 0;
-  z-index: -1;
-  transition: all .4s; }
-
-.btn--white::after {
-  background-color: #fff; }
-
-.btn:hover::after {
-  transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0;
-  /* Fade out */ }
-
-.btn--animated {
-  animation: moveInBottom .5s ease-out .75s;
-  /* .75s delay */
-  animation-fill-mode: backwards;
-  /* Apply the end of the keyframes first making it invisible before animation */ }
+.btn {
+  /* Applies to link that has not been selected*/
+  /* Modeled after the original button */ }
+  .btn:link, .btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    /* top and bottom and left and right*/
+    display: inline-block;
+    /* should always do this if you want to give paddings or height/width*/
+    border-radius: 10rem;
+    transition: all .2s;
+    /* Has to be on the initial state, smooth out the transform props */
+    position: relative; }
+  .btn:hover {
+    transform: translateY(-3px);
+    /* Move up when hover */
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    /* x y blur */ }
+    .btn:hover::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+      /* Fade out */ }
+  .btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  .btn--white {
+    background-color: #fff;
+    color: #777; }
+    .btn--white::after {
+      background-color: #fff; }
+  .btn::after {
+    content: "";
+    /* Must specify this, can be empty */
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    /* Need this to be behind the button so the parent need to be relative*/
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s; }
+  .btn--animated {
+    animation: moveInBottom .5s ease-out .75s;
+    /* .75s delay */
+    animation-fill-mode: backwards;
+    /* Apply the end of the keyframes first making it invisible before animation */ }
