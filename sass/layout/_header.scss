@@ -10,6 +10,7 @@
     background-position: top; /* Make sure at all resolution, the img is hitting the top*/
     position: relative;
 
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
     /* Looking at the 4 corners clockwise (x y)*/
     clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%); /* Clipping the header to a certain shape */
 
