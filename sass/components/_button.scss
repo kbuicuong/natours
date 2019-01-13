@@ -1,15 +1,21 @@
 .btn{
+    &,
     /* Applies to link that has not been selected*/
     &:link,
     &:visited{
         text-transform: uppercase;
         text-decoration: none;
         padding: 1.5rem 4rem; /* top and bottom and left and right*/
-        display: inline-block; /* should always do this if you want to give paddings or height/width*/
+        display: inline-block; /* should always do this if you want to give paddings or height/width */
         border-radius: 10rem;
         transition: all .2s; /* Has to be on the initial state, smooth out the transform props */
         position: relative; 
         font-size: $default-font-size;
+
+        //Change for the <button> element
+        border: none;
+        cursor: pointer;
+
     }
     &:hover{
         transform: translateY(-3px); /* Move up when hover */
@@ -21,7 +27,9 @@
         }
     }
     
-    &:active{
+    &:active,
+    &:focus {
+        outline: none;
         transform: translateY(-1px);
         box-shadow: 0 .5rem 1rem rgba($color-black, .2);
     }
