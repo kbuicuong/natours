@@ -12,10 +12,28 @@
 html{
     //This defines what 1rem is
     font-size: 62.5%; /* 16px default, this calculate to 10px*/
+
+    @include respond(tab-land){
+        font-size: 56.25%; //9px
+    }
+
+    @include respond(tab-port){
+        font-size: 50%; //8px
+    }
+
+    @include respond(big-desktop){
+        font-size: 75%; //12px
+    }
 }
 
 body{
     /* Changes borders and paddings so that the width and height are no longer added
         to the total size of the box */
     box-sizing: border-box;
+    padding: 3rem;
+
+    @include respond(tab-port){
+        padding: 0;
+    }
+
 }

@@ -5,7 +5,6 @@ body{
     font-size: $default-font-size;
     line-height: 1.7; /* 1.7 times bigger than the normal */
     color: $color-grey-dark;
-    padding: 3rem;
 }
 
 
@@ -16,9 +15,10 @@ body{
     backface-visibility: hidden; /* backpart of an element, fixes the little shake from animation */
     margin-bottom: 6rem;
 
+
     /* span default is inline, you'd want block because block occupy the entire space and create line break before and after;
     doing so will cause the two span to stack on top of each other    
-*/
+    */
     &--main{
         display: block;
         font-size: 6rem;
@@ -31,6 +31,11 @@ body{
         animation-timing-function: ease-out; /* Speed of the animation, fast in and slow out*/
 
         /* animation-iteration-count: 3;  how many time the animation is played*/
+
+        @include respond(phone){
+            letter-spacing: 1rem;
+            font-size: 5rem;
+        }
     }
 
     &--sub{
@@ -39,6 +44,10 @@ body{
         font-weight: 700;
         letter-spacing: 1.75rem;
         animation: moveInRight 1s ease-out; /* Combination of many properties*/
+
+        @include respond(phone){
+            letter-spacing: .5rem;
+        }
     }
 }
 
@@ -52,6 +61,14 @@ body{
     color: transparent; //making the color transparent so the background show through
     letter-spacing: .2rem;
     transition: all .2s;
+
+    @include respond(tab-port){
+        font-size: 3rem;
+    }
+
+    @include respond(phone){
+        font-size: 2.5rem;
+    }
 
     &:hover{
         transform: skewY(2deg) skewX(15deg) scale(1.1);
