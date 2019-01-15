@@ -1,11 +1,11 @@
 .header{
-    height: 95vh; /* Height of this element is 95% of the view port */
+    height: 85vh; /* Height of this element is 85% of the view port */
     /* Basically two background images, first is on top, in this case the gradient*/
     background-image: linear-gradient(
         to right bottom, 
         rgba($color-primary-light, 0.8), 
         rgba($color-primary-dark, 0.8)) , 
-        url('../img/hero.jpg');
+        url('../img/hero-small.jpg');
     background-size: cover;
     background-position: top; /* Make sure at all resolution, the img is hitting the top*/
     position: relative;
@@ -13,6 +13,24 @@
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     /* Looking at the 4 corners clockwise (x y)*/
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); /* Clipping the header to a certain shape */
+
+    @supports(clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)){
+        height: 95vh;
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+        /* Looking at the 4 corners clockwise (x y)*/
+        clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); /* Clipping the header to a certain shape */   
+    }
+
+    //size of apple retina screen
+    @media(min-resolution: 192dpi) and (min-width: 37.5em), 
+        (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em),
+        (min-width: 125em){
+        background-image: linear-gradient(
+        to right bottom, 
+        rgba($color-primary-light, 0.8), 
+        rgba($color-primary-dark, 0.8)) , 
+        url('../img/hero.jpg');
+    }
 
     @include respond(phone){
         -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);

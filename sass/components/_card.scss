@@ -15,6 +15,7 @@
         top: 0;
         left: 0;
         width: 100%;
+        -webkit-backface-visibility: hidden;
         backface-visibility: hidden; //hide the backpart of the element
         border-radius: 3px;
         //image is on top and getting rid of the rounded corners so you need this
